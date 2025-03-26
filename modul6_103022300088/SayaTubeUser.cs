@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace modul6_103022300088
 
         public SayaTubeUser(string username)
         {
+            Debug.Assert(username != null, "Username tidak boleh null");
+            Debug.Assert(username.Length <= 100, "Username tidak boleh lebih dari 100 kata");
             Random rnd = new Random();
             this.id = rnd.Next(100000, 999999);
             this.username = username;
@@ -32,6 +35,8 @@ namespace modul6_103022300088
 
         public void addVideo(SayaTubeVideo video)
         {
+            Debug.Assert(video != null, "Video tidak boleh null");
+            Debug.Assert(video.getplayCount() > 20000000, "PlayCount kurang dari bilang integer maksimal");
             uploadedVideos.Add(video);
         }
 
